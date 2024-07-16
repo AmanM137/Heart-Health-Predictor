@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction Result</title>
+    <style>
+        body {
+            background-color: #949cb0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .heading {
+            text-align: center;
+            margin: 5px 20px 20px 20px;
+            padding: 15px;
+        }
+
+        .heading h1 {
+            color: #ffffff;
+        }
+
+        hr {
+            height: 1px;
+            border: none;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, white));
+        }
+
+        .container {
+            width: 80%;
+            height: 100vh;
+            margin: auto;
+            background-color: #060606;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .result-group {
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+        h2>span{
+            color: #ec1839;
+            font-size: 1.2em;
+        }
+
+        p{
+            color: #ffffff;
+            margin: 2px 0 0 10px;
+            line-height: 1.5;
+            font-size: 1.2em;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heading">
+            <h1>Heart Disease Prediction Result</h1>
+            <hr>
+        </div>
+        <div class="result-group" style="text-align: center;">
+            {% if prediction >= 0 and prediction < 0.3 %}
+            <h2><span>Low Risk for Heart Disease.</span></h2>
+            <p>No significant signs detected in current assessment.</p>
+            <img src="static/healthy_heart.jpg" alt="Healthy Heart">
+            {% elif prediction >=0.3 and prediction < 0.5 %}
+            <h2><span>Please be Advised.</span></h2>
+            <p>Your current health condition may warrant precautionary measures. We recommend attentive self-care and prompt consultation with a healthcare professional should you experience any discomfort.</p>
+            {% else %}
+            {% if prediction >=0.5 and prediction < 0.7 %}
+            <h2><span>You may be at risk of heart disease.</span></h2>
+            <p>We advise consulting a doctor for further evaluation and necessary tests.</p>
+            {% elif prediction >=0.7 and prediction < 1.0 %}
+            <h2><span>Urgent</span></h2>
+            <p>Heart condition detected. Seek immediate medical assistance.</p>
+            <img src="static/diseased_heart.jpg" alt="Diseased Heart">
+            {% endif %}
+            {% endif %}
+            <a href="/" class="button">Go back to home page</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

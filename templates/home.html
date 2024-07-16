@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" , initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #949cb0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-page {
+            width: 80%;
+            margin: auto;
+            background-color: #060606;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .heading {
+            text-align: center;
+            margin: 5px 20px 20px 20px;
+            padding: 15px;
+        }
+
+        .heading h1 {
+            color: #ffffff;
+        }
+
+        hr {
+            height: 1px;
+            border: none;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, white));
+        }
+
+        .form-group {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #687eff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-page">
+        <div class="heading">
+            <h1>Heart Disease Prediction</h1>
+            <hr>
+        </div>
+
+        <div class="form-group">
+            <form action="/predict" method="post">
+                <label for="age">Age:</label>
+                <div class="input-group">
+                    <input type="text" id="age" name="age">
+                </div>
+
+                <label for="sex">Sex:</label>
+                <div class="input-group">
+                    <select class="option-group" id="sex" name="sex">
+                        <option value="">Select</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                    </select>
+                </div>
+
+                <label for="cp">Chest Pain Type:</label>
+                <div class="input-group">
+                    <select class="option-group" id="cp" name="cp">
+                        <option value="">Select</option>
+                        <option value="0">Typical Angina</option>
+                        <option value="1">Atypical Angina</option>
+                        <option value="2">Non-Anginal Pain</option>
+                        <option value="3">Asymptomatic</option>
+                    </select>
+                </div>
+
+                <label for="trestbps">Resting Blood Pressure (mm Hg):</label>
+                <div class="number-input input-group">
+                    <input type="number" id="trestbps" name="trestbps" autocomplete="off">
+                </div>
+
+                <label for="chol">Serum Cholesterol (mg/dl):</label>
+                <div class="number-input input-group">
+                    <input type="number" id="chol" name="chol" autocomplete="off">
+                </div>
+
+                <label for="fbs">Fasting Blood Sugar (> 120 mg/dl):</label>
+                <div class="input-group">
+                    <select class="option-group" id="fbs" name="fbs">
+                        <option value="">Select</option>
+                        <option value="0">False</option>
+                        <option value="1">True</option>
+                    </select>
+                </div>
+
+                <label for="restecg">Resting Electrocardiographic Results:</label>
+                <div class="input-group">
+                    <select class="option-group" id="restecg" name="restecg">
+                        <option value="">Select</option>
+                        <option value="0">Normal</option>
+                        <option value="1">ST-T Wave Abnormality</option>
+                        <option value="2">Left Ventricular Hypertrophy</option>
+                    </select>
+                </div>
+
+                <label for="thalach">Maximum Heart Rate Achieved:</label>
+                <div class="number-input input-group">
+                    <input type="number" id="thalach" name="thalach" autocomplete="off">
+                </div>
+
+                <label for="exang">Exercise Induced Angina (No for 0, Yes for 1):</label>
+                <div class="input-group">
+                    <select class="option-group" id="exang" name="exang">
+                        <option value="">Select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label>
+                <div class="number-input input-group">
+                    <input type="number" id="oldpeak" name="oldpeak" autocomplete="off" step="any">
+                </div>
+
+                <label for="slope">Slope of the Peak Exercise ST Segment:</label>
+                <div class="input-group">
+                    <select class="option-group" id="slope" name="slope">
+                        <option value="">Select</option>
+                        <option value="0">Upsloping</option>
+                        <option value="1">Flat</option>
+                        <option value="2">Downsloping</option>
+                    </select>
+                </div>
+
+                <label for="ca">Number of Major Vessels Colored by Flourosopy:</label>
+                <div class="input-group">
+                    <select class="option-group" id="ca" name="ca">
+                        <option value="">Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <label for="thal">Thalassemia Type:</label>
+                <div class="input-group">
+                    <select class="option-group" id="thal" name="thal">
+                        <option value="">Select</option>
+                        <option value="1">Normal</option>
+                        <option value="2">Fixed defect</option>
+                        <option value="3">Reversable defect</option>
+                    </select>
+                </div>
+                <input type="submit" value="Predict">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
